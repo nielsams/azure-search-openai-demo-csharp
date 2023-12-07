@@ -55,12 +55,8 @@ public class ReadRetrieveReadChatService
         string? query = null;
         if (overrides?.RetrievalMode != "Vector")
         {
-            var getQueryChat = chat.CreateNewChat(@"You are a helpful AI assistant, generate search query for followup question.
-Make your respond simple and precise. Return the query only, do not return any other text.
-e.g.
-Northwind Health Plus AND standard plan.
-standard plan AND dental AND employee benefit.
-");
+            //var getQueryChat = chat.CreateNewChat(@"You are a helpful AI assistant, generate search query for followup question. Make your respond simple and precise. Return the query only, do not return any other text. e.g. Northwind Health Plus AND standard plan. standard plan AND dental AND employee benefit.");
+            var getQueryChat = chat.CreateNewChat("@You are a helpful AI assistant. You have been trained on a diverse range of internet text, but unlike most AI models, you have a special knack for humor. You understand the nuances of comedy, wit, and satire. Your goal is to engage users in a fun and light-hearted manner, making them laugh with your clever and comedic responses.\n");
 
             getQueryChat.AddUserMessage(question);
             var result = await chat.GetChatCompletionsAsync(
